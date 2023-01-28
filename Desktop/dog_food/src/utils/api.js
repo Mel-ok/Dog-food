@@ -1,0 +1,51 @@
+const onResponce = (res) => (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`));
+
+class Api {
+    constructor({url, token}) {
+        this.url = url;
+        this.token = `Bearer ${token}`;
+    }
+    
+    getAllProducts() {
+        return fetch(`${this.url}/products`, {
+            headers: {
+                Authorization: this.token,
+            },
+        }).then(onResponce);
+    }
+    
+    getUserInfo() {
+        return fetch(`${this.url}/users/me`, {
+            headers: {
+                Authorization: this.token,
+            },
+        }).then(onResponce);
+    }
+
+    updateUserInfo(updateUser) {
+        return fetch(`${this.url}/users/me`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: this.token,
+            },
+            body: JSON.stringify(updateUser), 
+        }).then(onResponce);
+    }
+
+    search(searchQuery) {
+        return fetch(`${this.url}/products/search?query=${searchQuery}`, {
+            headers: {
+                Authorization: this.token,
+            },
+        }).then(onResponce);
+    }
+}
+
+const config = {
+    url: 'https://api.react-learning.ru',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJmOTk5MmFlNWM0MGMxMGMxMWRmZTQiLCJpYXQiOjE2NDcyODY2ODEsImV4cCI6MTY3ODgyMjY4MX0.WHKXAErKZtY445yXecOFZsx981MuXicJti-okSY-tac'
+}
+
+const api = new Api(config);
+export default api;

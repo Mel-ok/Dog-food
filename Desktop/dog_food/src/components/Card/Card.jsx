@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../Button/button';
 import {ReactComponent as SaveIcon} from '../../assets/image/save.svg';
 
-const Card = ({name, picture, wight, price, discount, description}) => {
+const Card = ({name, pictures, wight, price, discount, description}) => {
     const discountPrice = Math.round(price - (price * discount) / 100);
     return (
         <div className="card">
@@ -14,7 +14,7 @@ const Card = ({name, picture, wight, price, discount, description}) => {
                 <SaveIcon />
             </div>
             <a href="/product" className="card__link">
-                <img src={picture} alt={description} className="card__image" />
+                <img src={pictures} alt={description} className="card__image" />
                 <div className="card__desc">
                 {discount > 0 && <span className="card__old-price">{price} P</span>}
                     <span className={discount > 0 ? "card__price card__price_type_discount": "card__price"}>{discountPrice} P</span>

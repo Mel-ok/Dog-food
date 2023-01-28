@@ -1,4 +1,15 @@
-.App {
+.container {
+  max-width: 1024px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -39,4 +50,4 @@ span {
   to {
     transform: rotate(360deg);
   }
-}
+} */
