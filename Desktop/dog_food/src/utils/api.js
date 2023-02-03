@@ -40,6 +40,16 @@ class Api {
             },
         }).then(onResponce);
     }
+
+    changeLikeStatus(productId, isLike) {
+        return fetch(`${this.url}/products/likes/${productId}`, {
+            method: isLike ? 'DELETE' : 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: this.token,
+            },
+        }).then(onResponce);
+    }
 }
 
 const config = {

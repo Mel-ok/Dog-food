@@ -1,13 +1,14 @@
-import './App.css';
+import './style.css';
 import {useState, useEffect} from 'react';
-import Button from '../Button/button';
+// import Button from '../Button/button';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import CardList from '../CardList/CardList';
-import User from '../User/User';
+// import User from '../User/User';
 import useDebounce from '../../hooks/useDebounce';
 import api from '../../utils/api';
+import isLike from '../../utils/utils';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -36,6 +37,14 @@ function App() {
     });
   }, []);
 
+  const handleProductLike = (productId, productLikes) => {
+    const isLiked = isLike(productLikes, user._id);
+    api.changeLikeStatus(productId, isLiked).then((updateProduct) => {
+      const updateCards = cards.map((card) => (card._id === updateProduct._id ? updateProduct : card));
+      setCards(updateCards);
+    });
+  };
+
   return (
     <>
     <Header user={user} handleUpdateUser={handleUpdateUser}>
@@ -46,7 +55,7 @@ function App() {
       </>
     </Header>
     <div className='container'>
-      <CardList cards={cards}></CardList>
+      <CardList userId={user?._id} handleProductLike={handleProductLike} cards={cards}></CardList>
     </div>
     </>
   );

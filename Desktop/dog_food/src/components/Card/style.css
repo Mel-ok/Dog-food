@@ -91,7 +91,7 @@
     right: 0;
   }
   
-  .card__favorite {
+  .favorite {
     cursor: pointer;
     background: none;
     border: none;
@@ -100,7 +100,7 @@
     fill: white;
   }
   
-  .card__isLike {
+  .isLike {
     fill: #f44336;
   }
   
@@ -118,7 +118,7 @@
     color: #ffffff;
   }
   
-  .card__tag_discount {
+  .card__discount {
     background-color: #f44336;
   }
   

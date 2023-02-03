@@ -1,17 +1,26 @@
 import './style.css';
 import React from 'react';
-import Button from '../Button/button';
 import {ReactComponent as SaveIcon} from '../../assets/image/save.svg';
+import cn from 'classnames';
 
-const Card = ({name, pictures, wight, price, discount, description}) => {
+import Button from '../Button/button';
+import isLike from '../../utils/utils';
+
+const Card = ({userId, _id, likes, name, pictures, wight, price, discount, description, handleProductLike}) => {
     const discountPrice = Math.round(price - (price * discount) / 100);
+    const isLiked = isLike(likes, userId);
+
+    const onClick = () => {
+        handleProductLike(_id, likes);
+    };
+
     return (
-        <div className="card">
+        <div className='card'>
             <div className="card__sticky card__sticky_type_top-left">
                 {discount > 0 && <span className="card__discount">{discount} %</span>}
             </div>
             <div className="card__sticky card__sticky_type_top-right">
-                <SaveIcon />
+                <SaveIcon onClick={onClick} className={cn('favorite', {['isLike']: isLiked} )} />
             </div>
             <a href="/product" className="card__link">
                 <img src={pictures} alt={description} className="card__image" />
