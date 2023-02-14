@@ -1,7 +1,9 @@
+import React from 'react';
 import {ReactComponent as Icon} from '../../assets/image/logo.svg';
 
 function Logo() {
-    return <Icon />
+    console.log('RERENDER LOGO');
+    return <Icon />;
 }
 
-export default Logo;
+export default React.memo(Logo);

@@ -1,14 +1,15 @@
 import './style.css';
+import React from 'react';
 import {useState, useEffect} from 'react';
-// import Button from '../Button/button';
+// import { Spin } from 'antd';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import CardList from '../CardList/CardList';
-// import User from '../User/User';
 import useDebounce from '../../hooks/useDebounce';
 import api from '../../utils/api';
 import isLike from '../../utils/utils';
+import ProductPage from '../ProductPage/ProductPage';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -19,7 +20,9 @@ function App() {
   const onChange = (text) => setSearchQuery(text);
 
   const handleRequest = () => {
-    api.search(debounceValue).then((data) => setCards(data));
+    api
+      .search(debounceValue)
+      .then((data) => setCards(data));
   };
 
   const handleUpdateUser = (updateUser) => {
@@ -54,9 +57,8 @@ function App() {
 
       </>
     </Header>
-    <div className='container'>
-      <CardList userId={user?._id} handleProductLike={handleProductLike} cards={cards}></CardList>
-    </div>
+    {/* <div className='container'><CardList userId={user?._id} handleProductLike={handleProductLike} cards={cards}></CardList></div> */}
+    <div className='container'><ProductPage></ProductPage></div>
     </>
   );
 }

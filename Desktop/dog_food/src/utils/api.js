@@ -22,6 +22,14 @@ class Api {
         }).then(onResponce);
     }
 
+    getProductInfo(id) {
+        return fetch(`${this.url}/products/:${id}`, {
+            headers: {
+                Authorization: this.token,
+            },
+        }).then(onResponce);
+    }
+
     updateUserInfo(updateUser) {
         return fetch(`${this.url}/users/me`, {
             method: 'PATCH',
