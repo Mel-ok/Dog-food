@@ -7,7 +7,7 @@ const ProductPage = () => {
     const [product, setProduct] = useState({});
     useEffect(() => {
         api.getProductInfo('622c77dc77d63f6e70967d20').then((data) => setProduct(data));
-    });
+    }, []);
 
     return (
         <>

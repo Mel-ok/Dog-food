@@ -23,7 +23,7 @@ class Api {
     }
 
     getProductInfo(id) {
-        return fetch(`${this.url}/products/:${id}`, {
+        return fetch(`${this.url}/products/${id}`, {
             headers: {
                 Authorization: this.token,
             },
