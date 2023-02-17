@@ -2,6 +2,7 @@ import './style.css';
 import React from 'react';
 import {ReactComponent as SaveIcon} from '../../assets/image/save.svg';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 import Button from '../Button/button';
 import isLike from '../../utils/utils';
@@ -22,7 +23,7 @@ const Card = ({userId, _id, likes, name, pictures, wight, price, discount, descr
             <div className="card__sticky card__sticky_type_top-right">
                 <SaveIcon onClick={onClick} className={cn('favorite', {['isLike']: isLiked} )} />
             </div>
-            <a href="/product" className="card__link">
+            <Link to={`/product/${_id}`} className="card__link">
                 <img src={pictures} alt={description} className="card__image" />
                 <div className="card__desc">
                 {discount > 0 && <span className="card__old-price">{price} P</span>}
@@ -30,7 +31,7 @@ const Card = ({userId, _id, likes, name, pictures, wight, price, discount, descr
                     <span className="card__wight">{wight}</span>
                     <p className="card__name">{name}</p>
                 </div>
-            </a>
+            </Link>
             <Button text="В корзину"></Button>
         </div>
     )

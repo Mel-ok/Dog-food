@@ -6,12 +6,17 @@
     min-width: 300px;
     padding: 16px;
     border-radius: 32px;
-    border-color: grey;
+    border-color: transparent;
 }
 
-.search__icon {
+.search__icon,
+.search__iconCross {
     position: absolute;
-    top: 50%;
     right: 0px;
+    top: 50%;
     transform: translate(-50%, -50%);
+}
+
+.search__iconCross {
+    right: 20px;
 }
