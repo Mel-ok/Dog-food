@@ -3,13 +3,17 @@ import React from 'react';
 import {ReactComponent as SaveIcon} from '../../assets/image/save.svg';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
+import { useContext } from 'react';
 
 import Button from '../Button/button';
 import isLike from '../../utils/utils';
 
-const Card = ({userId, _id, likes, name, pictures, wight, price, discount, description, handleProductLike}) => {
+const Card = ({_id, likes, name, pictures, wight, price, discount, description}) => {
     const discountPrice = Math.round(price - (price * discount) / 100);
-    const isLiked = isLike(likes, userId);
+    
+    const {user, handleProductLike} = useContext(UserContext);
+    const isLiked = isLike(likes, user._id);
 
     const onClick = () => {
         handleProductLike(_id, likes);

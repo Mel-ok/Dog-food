@@ -6,12 +6,15 @@ import cn from 'classnames';
 import {ReactComponent as SaveIcon} from '../../assets/image/save.svg';
 import isLike from '../../utils/utils';
 import Rating from '../Rating/Rating';
+import { UserContext } from '../../context/userContext';
+import { useContext } from 'react';
 
-const Product = ({handleProductLike, name, description, price, discount, pictures, reviews, stock, user, likes}) => {
+const Product = ({handleProductLike, name, description, price, discount, pictures, reviews, stock, likes}) => {
     const discountPrice = Math.round(price - (price * discount) / 100);
     const [count, stateCount] = useState(0);
     const [rate, setRate] = useState(3);
 
+    const {user} = useContext(UserContext);
     const isLiked = isLike(likes, user?._id);
 
     return (
@@ -59,7 +62,7 @@ const Product = ({handleProductLike, name, description, price, discount, picture
                     
                     <div className="favourite">
                         <SaveIcon onClick={handleProductLike} className={cn('favorite', {['isLike']: isLiked} )} />
-                        {/* {isLiked ? "В избранном" : "В избранное"} */}
+                        {isLiked ? "В избранном" : "В избранное"}
                     </div>
                     
 
