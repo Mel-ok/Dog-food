@@ -1,14 +1,12 @@
 import './style.css';
 import React from 'react';
 import {useState, useEffect, useCallback} from 'react';
-// import { Spin } from 'antd';
 import {Routes, Route} from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import CardList from '../CardList/CardList';
-import CatalogPage from '../../pages/CatalogPage/CatalogPage';
 import api from '../../utils/api';
 import isLike from '../../utils/utils';
 import ProductPage from '../../pages/Product/ProductPage';
@@ -65,20 +63,16 @@ function App() {
       <>
         <Logo />
         <Routes>
-          <Route path='/' element={<Search onSearch={handleRequest} />}></Route>
           <Route path='/catalog' element={<Search onSearch={handleRequest} />}></Route>
         </Routes>
       </>
     </Header>
     <Routes>
-      <Route path='/' element={<CatalogPage searchQuery={searchQuery} cards={cards}></CatalogPage>}></Route>
-      <Route path='/catalog' element={<CatalogPage cards={cards}></CatalogPage>}></Route>
+      <Route path='/catalog' element={<CardList searchQuery={searchQuery} cards={cards}></CardList>}></Route>
       <Route path='/product/:productId' element={<ProductPage></ProductPage>}></Route>
       <Route path='/favourite' element={<FavouritePage favouriteCards={favouriteCards}></FavouritePage>}></Route>
       <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
     </Routes>
-    {/* <div className='container'><CardList userId={user?._id} handleProductLike={handleProductLike} cards={cards}></CardList></div> */}
-    {/* <div className='container'><ProductPage user={user}></ProductPage></div> */}
     <Footer></Footer>
   </UserContext.Provider>
   );

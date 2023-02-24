@@ -1,9 +1,9 @@
 import './style.css';
 import User from '../User/User';
-import Button from '../Button/button';
 import { UserContext } from '../../context/userContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {ReactComponent as IconFav} from '../../assets/image/save.svg';
 
 export default function Header({children, handleUpdateUser}) {
     const updateUser = {name: 'Новое имя', about: 'Новый about'};
@@ -16,11 +16,10 @@ export default function Header({children, handleUpdateUser}) {
     return (
         <header className="header">
             {children}
-            <User user={user} />
-            <Button onClick={onClick} text='Изменить пользователя'></Button>
+            <User user={user} />     
             <Link to='/favourite'>
-                <Button text='Избранное' />
+                <IconFav className='fav'/>
             </Link>
         </header>
-    );
+    ); 
 }

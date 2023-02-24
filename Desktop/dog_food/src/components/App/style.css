@@ -6,12 +6,8 @@
   margin: 0 auto;
 }
 
-/* .App {
+ .App {
   text-align: center;
-}
-
-span {
-  color: red;
 }
 
 .App-logo {
@@ -47,6 +43,4 @@ span {
   to {
     transform: rotate(360deg);
   }
-} */
-
-
+}

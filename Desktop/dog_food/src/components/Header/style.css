@@ -6,3 +6,13 @@
     align-items: center;
     justify-content: space-around;
 }
+
+.fav {
+    border: none;
+    background-color: #fed700;
+    padding: 10px 18px;
+    border-radius: 55px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
